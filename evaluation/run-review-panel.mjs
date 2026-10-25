@@ -26,7 +26,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { requireSlots, isDryRun, ensureDir, writeJson, chat, extractJson, DRY_RUN_HEADER } from "./lib/env.mjs";
 
-const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..");
+const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const resultsDir = path.join(repoRoot, "evaluation", "results");
 const rawDir = path.join(resultsDir, "review-panel");
 const dryDir = path.join(repoRoot, "dry-run", "review-panel");
