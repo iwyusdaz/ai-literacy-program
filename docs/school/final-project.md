@@ -24,6 +24,8 @@ Applies all four objectives (S1.1–S4.1). Students create a guide for a younger
 > 4. **Your rules** — two personal rules for using AI for schoolwork, with reasons (Lesson 4).
 >
 > **Constraints:** 200–300 words (or 90 seconds spoken). Honest tone — no scare tactics; the guide should make the reader *smarter*, not *scared*.
+>
+> **Cite your AI help:** end with one line saying whether — and how — you used AI while making the guide.
 
 ## How the project is scored
 

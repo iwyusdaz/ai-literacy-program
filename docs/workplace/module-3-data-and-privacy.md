@@ -88,16 +88,14 @@ Classify each paste: 🟢 / 🟡 / 🔴. Assume a **company-approved** tool.
 
 ## 5. Too late? Do this
 
-If prohibited data is already pasted:
+If prohibited data is already pasted, do these in order:
 
-```mermaid
-flowchart TD
-    S1["1. Stop using that chat"] --> S2["2. Do NOT try to hide it — report the same day"]
-    S2 --> S3["3. Tell your team lead and follow the incident procedure"]
-    S3 --> S4["4. Data protection (DPO) decides next steps"]
-```
+1. **Stop** using that chat.
+2. Do **not** try to hide it — report the same day.
+3. Tell your team lead and follow the incident procedure.
+4. Data protection (the DPO) decides the next steps.
 
-Text summary: stop → report the same day → your lead and the DPO take it from there. Deleting the chat quietly is the one move that turns a small incident into a serious one. Reporting fast is always the right answer; at Northwind (fictional), nobody has ever been disciplined for reporting quickly.
+Deleting the chat quietly is the one move that turns a small incident into a serious one. Reporting fast is always the right answer; at Northwind (fictional), nobody has ever been disciplined for reporting quickly.
 
 ## 6. Reflect (1 minute)
 

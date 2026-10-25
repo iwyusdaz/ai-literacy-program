@@ -23,7 +23,7 @@ Shared learning interactive for the [AI Literacy Program](../../index.html) — 
 - The temperature `<input type="range">` has a visible label with its current value shown in an `<output>`; arrow keys work as native slider behavior.
 - All controls are native buttons/select — full keyboard support; visible `:focus-visible` outlines.
 - Bar-width animation only runs when `prefers-reduced-motion: no-preference`.
-- The probability table sits in a scrollable `role="region"` with a heading label so keyboard users can reach horizontal overflow.
+- The probability table sits in a scrollable `role="group"` with a heading label so keyboard users can reach horizontal overflow.
 - Works at 320 px width and 400% zoom (tested — see `evaluation/tests/`).
 
 ## Known simplifications (deliberate)

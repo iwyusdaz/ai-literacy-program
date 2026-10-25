@@ -29,20 +29,14 @@ Sofia imagines the shortcut. Then she imagines the risks:
 
 ## 2. Concept: the affected-person test
 
-One question sorts most cases:
+One question sorts most cases: **does acting on this output change something for a person** — their money, job, health, safety, rights or reputation? Work through it in order:
 
-> **Does acting on this output change something for a person** — their money, job, health, safety, rights or reputation?
-
-```mermaid
-flowchart TD
-    A["AI suggests an action"] --> Q{"Does it change something for a person?"}
-    Q -- "No" --> CHK["Run the 5-step check (Module 2) and proceed"]
-    Q -- "Yes" --> HUM["A human decides — AI may inform, never replace"]
-    HUM --> WHO["Who is accountable? Name the person who owns the decision"]
-    WHO --> ESC["If unclear or pressured: escalate — see the path below"]
-```
-
-Text summary: if the output changes something for a person, a human decides and owns the decision. If not, the Module 2 check is enough.
+1. The AI suggests an action.
+2. Ask: does acting on it change something for a person?
+   - **No** → run the five-step check (Module 2) and proceed.
+   - **Yes** → a human decides. AI may *inform* (draft, summarize, flag), never replace.
+3. Name the person who owns the decision.
+4. Unclear, or pressure to skip the human? → escalate (the path below).
 
 **Signals that a use is high-risk** (the more signals, the more care):
 

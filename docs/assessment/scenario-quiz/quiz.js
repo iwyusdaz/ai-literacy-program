@@ -55,6 +55,7 @@
       var opts = el("div", { class: "options" });
       item.options.forEach(function (opt, oi) {
         var id = "q" + qi + "-o" + oi;
+        var letter = String.fromCharCode(65 + oi); // A, B, C, D — visible, so feedback like "option B" is findable
         var label = el("label", { for: id });
         var input = el("input", {
           type: "radio",
@@ -62,7 +63,10 @@
           id: id,
           value: String(oi)
         });
+        var strong = el("strong", { class: "opt-letter" }, letter + ".");
         label.appendChild(input);
+        label.appendChild(document.createTextNode(" "));
+        label.appendChild(strong);
         label.appendChild(document.createTextNode(" " + opt.text));
         opts.appendChild(label);
       });

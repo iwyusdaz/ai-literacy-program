@@ -43,22 +43,15 @@ Two failure modes to know:
 
 ## 3. The five-step check
 
-Use it for anything you did not fully write yourself. It takes seconds, and it is on the [job aid](job-aid-verify-before-you-send.html) you can keep open all day.
+Use it for anything you did not fully write yourself. It takes seconds, and it is on the [job aid](job-aid-verify-before-you-send.html) you can keep open all day. Run the checks in order:
 
-```mermaid
-flowchart TD
-    C1["1. Claim — Is every statement true?"] --> C2["2. Numbers — Check every figure in the source"]
-    C2 --> C3["3. Source — Does the cited source exist and say this?"]
-    C3 --> C4["4. Data — Did I paste anything that must not leave the company?"]
-    C4 --> C5["5. Affected — Does acting on this change something for a person?"]
-    C5 --> OK["All five pass — send"]
-    C1 --> FIX["Fix or remove — then re-check"]
-    C3 --> FIX
-    C4 --> FIX2["Stop. Module 3 rules apply"]
-    C5 --> ESC["Human decides — Module 4"]
-```
+1. **Claim** — Is every statement true, or only plausible?
+2. **Numbers** — Check every figure in the source.
+3. **Source** — Does the cited source exist, and does it say this?
+4. **Data** — Did I paste anything that must not leave the company? (Module 3 rules)
+5. **Affected** — Does acting on this change something for a person? (Module 4 rules)
 
-Text summary: check (1) claims, (2) numbers, (3) sources, (4) data you pasted, (5) who is affected by acting on it. Fail a check → fix, or stop and escalate.
+All five pass → send. Fail a check → fix it, or stop and escalate.
 
 ## 4. Worked example
 

@@ -16,7 +16,7 @@
         {
           "text": "\"It predicted a likely-sounding date from patterns in text. Unless a tool is connected, it can't see our systems — so check the date in the order system before using it.\"",
           "correct": true,
-          "feedback": "Correct. Prediction, not lookup. The date is plausible text, not a fact from the system — verify it like any unconfirmed claim."
+          "feedback": "Prediction, not lookup. The date is plausible text, not a fact from the system — verify it like any unconfirmed claim."
         },
         {
           "text": "\"The AI is always right about logistics topics — it was trained on lots of shipping data.\"",
@@ -43,7 +43,7 @@
         {
           "text": "Drafting a first reply to a complaint about a late delivery",
           "correct": true,
-          "feedback": "Correct. Text drafting with human checks is the strongest use case — you verify names, dates and promises before sending (Module 2)."
+          "feedback": "Text drafting with human checks is the strongest use case — you verify names, dates and promises before sending (Module 2)."
         },
         {
           "text": "Deciding which of three applicants gets an interview",
@@ -70,7 +70,7 @@
         {
           "text": "A formal warning affects a person's job, so a human must make and own that decision — an AI suggestion cannot be accountable for it.",
           "correct": true,
-          "feedback": "Correct — that is the affected-person test from Module 4. AI may summarize the statistics; the decision and its accountability stay human."
+          "feedback": "That is the affected-person test from Module 4. AI may summarize the statistics; the decision and its accountability stay human."
         },
         {
           "text": "The assistant is new, so we should wait a month before using it for anything.",
@@ -92,7 +92,7 @@
         {
           "text": "A factual error plus an unverifiable claim — both must be fixed or removed before sending.",
           "correct": true,
-          "feedback": "Correct. \"As discussed last Tuesday\" asserts a conversation you cannot confirm (unverifiable), and \"arrives tomorrow before noon\" is a delivery promise you have not checked (unverified). Module 2, steps 1–2."
+          "feedback": "\"As discussed last Tuesday\" asserts a conversation you cannot confirm (unverifiable), and \"arrives tomorrow before noon\" is a delivery promise you have not checked (unverified). Module 2, steps 1–2."
         },
         {
           "text": "A fine sentence — fluent text is usually right.",
@@ -124,7 +124,7 @@
         {
           "text": "Check whether the directive and the European Logistics Board exist and say this; if you cannot verify them, remove the citation and the claim it supports.",
           "correct": true,
-          "feedback": "Correct — Module 2, step 3. Open the source; if it does not exist or does not say this, the claim goes too. No source you would show your manager = no source."
+          "feedback": "Module 2, step 3. Open the source; if it does not exist or does not say this, the claim goes too. No source you would show your manager = no source."
         },
         {
           "text": "Replace it with a different, more famous law without checking.",
@@ -141,17 +141,17 @@
     {
       "id": "Q6",
       "objective": "W2.2",
-      "stem": "You are about to send an AI-drafted summary of a delivery report. Using the Verify-before-you-send job aid, which comes FIRST?",
+      "stem": "You are about to send an AI-drafted summary of a delivery report. Using the Verify-before-you-send job aid, what do you do with the numbers in the summary?",
       "options": [
         {
-          "text": "Check every number in the summary against the source report.",
+          "text": "Run the checks in the job aid's order — for a summary that means every claim and every figure gets verified against the source before anything else gets polished.",
           "correct": true,
-          "feedback": "Correct — though all five checks matter, the job aid order starts with claims and numbers: AI summaries most often corrupt figures, and a confident wrong number is invisible in a meeting."
+          "feedback": "The job aid is a sequence, not a menu. For a summary the first two checks do the work: claims first, then numbers. AI summaries most often corrupt figures, and a confident wrong number is invisible in a meeting."
         },
         {
-          "text": "Format the summary nicely for the meeting.",
+          "text": "Check only the numbers that look odd — the rest came from the document itself.",
           "correct": false,
-          "feedback": "Polish comes last — formatting a wrong summary just makes the wrong numbers more persuasive."
+          "feedback": "\"Looks odd\" is exactly what a confident wrong number does not do. Run the full sequence on every claim and every figure."
         },
         {
           "text": "Send it — the AI summarized the document, so the numbers are from it.",
@@ -183,7 +183,7 @@
         {
           "text": "Prohibited — name + address + order number together identify a specific person. Describe the issue type instead: \"a complaint about a late delivery\".",
           "correct": true,
-          "feedback": "Correct. Identifiability is the trigger. The AI does not need the identity to draft good text — you add it back from the system in the reply."
+          "feedback": "Identifiability is the trigger. The AI does not need the identity to draft good text — you add it back from the system in the reply."
         },
         {
           "text": "Prohibited, but only because the address is a home address.",
@@ -200,7 +200,7 @@
         {
           "text": "\"In May, 13% of parcels to Münster were delayed.\" (an anonymized aggregate from a report)",
           "correct": true,
-          "feedback": "Correct — no person is identifiable, so it is permitted. Anonymized aggregates are the safe way to give the model context."
+          "feedback": "No person is identifiable, so it is permitted. Anonymized aggregates are the safe way to give the model context."
         },
         {
           "text": "A customer's email including their complaint and phone number",
@@ -232,7 +232,7 @@
         {
           "text": "Stop using that chat and report it today, so the team lead and the data protection officer can decide the next steps.",
           "correct": true,
-          "feedback": "Correct — Module 3's \"too late\" path: stop → report the same day → lead and DPO take over. Reporting fast is always the right answer."
+          "feedback": "Module 3's \"too late\" path: stop → report the same day → lead and DPO take over. Reporting fast is always the right answer."
         },
         {
           "text": "Wait to see whether the customer complains.",
@@ -259,7 +259,7 @@
         {
           "text": "AI may inform (draft interview questions, summarize requirements), but scoring and ranking people is a decision about people — humans screen, and any AI screening idea goes to the DPO and HR leadership as a formal decision.",
           "correct": true,
-          "feedback": "Correct — the affected-person test plus the escalation path. Sofia's scenario in Module 4: name the risk, keep the goal, move the decision to the right owner."
+          "feedback": "The affected-person test plus the escalation path. Sofia's scenario in Module 4: name the risk, keep the goal, move the decision to the right owner."
         },
         {
           "text": "Fine, because the model was trained on millions of CVs and is therefore objective.",
@@ -286,7 +286,7 @@
         {
           "text": "A named human at Northwind reviews the borderline claim and owns the decision; the AI's suggestion is one input.",
           "correct": true,
-          "feedback": "Correct. For decisions affecting a person, a named human owns the outcome. The person affected can then ask someone — and someone is actually accountable."
+          "feedback": "For decisions affecting a person, a named human owns the outcome. The person affected can then ask someone — and someone is actually accountable."
         },
         {
           "text": "Whoever is nearest the printer at the time.",
@@ -313,7 +313,7 @@
         {
           "text": "Signals: affects persons (driver safety), scale (every route), legal/safety dimension. The move: do not act on it; escalate immediately to the responsible manager.",
           "correct": true,
-          "feedback": "Correct — Module 4's signals 1, 2 and 5. Safety and law make this a hard stop, not a cost-benefit discussion at the dispatch desk."
+          "feedback": "Module 4's signals 1, 2 and 5. Safety and law make this a hard stop, not a cost-benefit discussion at the dispatch desk."
         },
         {
           "text": "One signal (it affects drivers), so a quick team chat about it is enough.",

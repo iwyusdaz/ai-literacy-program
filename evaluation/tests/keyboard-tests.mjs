@@ -19,6 +19,7 @@ const { chromium } = require("playwright");
 const BASE = process.argv[2] || process.env.TEST_BASE_URL || "http://127.0.0.1:8137";
 const results = [];
 let failures = 0;
+let skips = 0;
 
 function record(name, ok, detail = "") {
   results.push({ name, ok, detail });
@@ -28,6 +29,45 @@ function record(name, ok, detail = "") {
 
 const interactiveURL = `${BASE}/interactives/next-word/index.html`;
 const quizURL = `${BASE}/assessment/scenario-quiz/index.html`;
+
+// Every content page of the site (Jekyll renders docs/**/*.md to .html; the
+// interactive and quiz above are standalone HTML). Content pages only exist
+// on a Jekyll build — e.g. the live GitHub Pages site. When this test runs
+// against a plain static server they are recorded as SKIP, not failures;
+// against a built site every one of them must pass.
+const CONTENT_PAGES = [
+  "/",
+  "/about.html",
+  "/assessment/index.html",
+  "/assessment/performance-task.html",
+  "/assessment/rubric.html",
+  "/design/index.html",
+  "/design/alignment-matrix.html",
+  "/design/design-decisions.html",
+  "/design/evaluation-plan.html",
+  "/design/evaluation-report.html",
+  "/design/framework-mapping.html",
+  "/design/learning-objectives.html",
+  "/design/needs-analysis.html",
+  "/design/personas.html",
+  "/school/index.html",
+  "/school/final-project.html",
+  "/school/lesson-1-how-ai-makes-text.html",
+  "/school/lesson-2-when-ai-gets-it-wrong.html",
+  "/school/lesson-3-bias-and-fairness.html",
+  "/school/lesson-4-using-ai-to-learn-not-to-skip.html",
+  "/school/teacher-guide.html",
+  "/school/handouts/fact-check-worksheet.html",
+  "/school/handouts/my-ai-use-rules.html",
+  "/school/handouts/next-word-recording-sheet.html",
+  "/school/handouts/project-planner.html",
+  "/workplace/index.html",
+  "/workplace/job-aid-verify-before-you-send.html",
+  "/workplace/module-1-what-ai-is.html",
+  "/workplace/module-2-checking-outputs.html",
+  "/workplace/module-3-data-and-privacy.html",
+  "/workplace/module-4-oversight-and-escalation.html"
+];
 
 async function noHorizontalScroll(page, label) {
   const metrics = await page.evaluate(() => ({
@@ -186,11 +226,30 @@ async function testQuiz(page) {
 async function testReflow(page) {
   // WCAG 1.4.10 reflow: 320 CSS px wide is equivalent to 400% zoom at 1280.
   await page.setViewportSize({ width: 320, height: 800 });
+
+  // Standalone artifacts: verified on every run (local static server or live).
   await page.goto(interactiveURL, { waitUntil: "load" });
   await noHorizontalScroll(page, "interactive @320 CSS px (= 400% zoom at 1280)");
   await page.goto(quizURL, { waitUntil: "load" });
   await page.waitForSelector("fieldset");
   await noHorizontalScroll(page, "quiz @320 CSS px (= 400% zoom at 1280)");
+
+  // Every content page of the site. Content pages need a Jekyll build: against
+  // a plain static server they 404 and are counted as SKIP — re-run against the
+  // built site (the live Pages URL) for full coverage; there they must pass.
+  for (const path of CONTENT_PAGES) {
+    const url = `${BASE}${path}`;
+    const resp = await page.goto(url, { waitUntil: "load" });
+    // A built Just-the-Docs page always has .main-content — without it this is
+    // a static-server directory listing / 404, not the real page: SKIP it.
+    const built = await page.evaluate(() => Boolean(document.querySelector(".main-content")));
+    if (!resp || resp.status() === 404 || !built) {
+      console.log(`SKIP  reflow ${path} @320 CSS px — not built at ${BASE} (content pages need a Jekyll build; run against the live site)`);
+      skips++;
+      continue;
+    }
+    await noHorizontalScroll(page, `reflow ${path} @320 CSS px (= 400% zoom at 1280)`);
+  }
 }
 
 async function main() {
@@ -208,7 +267,8 @@ async function main() {
     await browser.close();
   }
 
-  console.log(`\n${results.filter((r) => r.ok).length}/${results.length} checks passed.`);
+  console.log(`\n${results.filter((r) => r.ok).length}/${results.length} checks passed.` +
+    (skips > 0 ? ` (${skips} content pages SKIPped — no Jekyll build at ${BASE}; run against the live site for full coverage.)` : ""));
   process.exit(failures > 0 ? 1 : 0);
 }
 

@@ -35,7 +35,7 @@ Organizations that build or use AI in the EU must take measures to support staff
 
 ## Evidence and evaluation
 
-**What was measured (done):** automated WCAG 2.1 A/AA audit (axe-core) — 0 critical/serious violations on every page; scripted task tests (Playwright) — 20/20 checks: keyboard-only flows, 320px/400%-zoom reflow, step counts, live-region announcements.
+**What was measured (done):** automated WCAG 2.1 A/AA audit (axe-core) — 0 critical/serious violations on every page; scripted task tests (Playwright) — 51/51 checks: keyboard-only flows, 320 CSS px reflow on every page of the site, step counts, live-region announcements.
 
 **Pending (pipelines built and tested, awaiting API keys):** AI-simulated learner runs (20 runs across 5 personas × 2 knowledge levels × 2 models) with quiz item analysis, and a multi-model review panel (3 reviewer roles × ≥2 models, agreement reported). Run with one command: `npm run eval:pending`. Results tables stay empty ("PENDING: requires API key") until then.
 
@@ -46,7 +46,7 @@ Organizations that build or use AI in the EU must take measures to support staff
 ## Accessibility
 
 - Tested with axe-core 4.11.1 (WCAG 2.1 A/AA + best practice): **0 critical/serious violations on all pages**.
-- Scripted keyboard tests pass for both interactive artifacts (tab order, activation, slider arrows, live announcements); reflow verified at 320 CSS px (400% zoom at 1280); `prefers-reduced-motion` respected; correctness never color-alone (✓/✗ text icons); quiz is `fieldset`/`legend` per question with feedback in a live region.
+- Scripted keyboard tests pass for the interactive and the quiz (tab order, activation, slider arrows, live announcements); reflow verified at 320 CSS px (400% zoom at 1280) **on every page of the site** — the four workplace modules initially failed this check (rendered Mermaid code blocks and wide tables overflowed by 61–332 px) and were fixed with plain lists and scroll-in-place CSS; `prefers-reduced-motion` respected; correctness never color-alone (✓/✗ text icons); quiz is `fieldset`/`legend` per question with feedback in a live region.
 - **Not done:** a manual VoiceOver pass (Guidepup automation doesn't work on macOS 27 — a [step-by-step manual check script](evaluation/human-protocol/manual-voiceover-check.md) with expected announcements is provided), and review by someone who uses assistive technology daily. Both are disclosed limitations, not claims.
 
 ## What I'd do differently / next steps
@@ -69,4 +69,4 @@ Jekyll + Just the Docs v0.12.0 (GitHub Pages), vanilla JS/CSS, Playwright 1.57.0
 
 ## AI-assistance disclosure
 
-This curriculum was **drafted with AI assistance** (build agent, October 2026) and reviewed as follows: factual claims about the EU AI Act and the AILit framework were verified against primary sources with access dates (`research/sources.md`); automated accessibility and keyboard tests were run; a structured **Agent review** by a separate reviewer agent is scheduled post-build (labeled as agent review, never educator feedback — see `evaluation/METHODS.md` §4). Known limits: AI-drafted content can date quickly (each page carries a "Last reviewed" stamp) and no human expert or learner has reviewed it yet.
+This curriculum was **drafted with AI assistance** (build agent, October 2026) and reviewed as follows: factual claims about the EU AI Act and the AILit framework were verified against primary sources with access dates (`research/sources.md`); automated accessibility and keyboard tests were run; a structured **Agent review** by a separate reviewer agent is complete (2026-10-26, `evaluation/agent-review.md`; labeled as agent review, never educator feedback — its findings are fixed in the same revision round; see `evaluation/METHODS.md` §4). Known limits: AI-drafted content can date quickly (each page carries a "Last reviewed" stamp) and no human expert or learner has reviewed it yet.

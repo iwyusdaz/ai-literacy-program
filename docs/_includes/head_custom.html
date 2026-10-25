@@ -1,0 +1,26 @@
+<!-- Custom head additions (Just the Docs "head_custom.html" include point). -->
+<style>
+  /* WCAG 1.4.10 Reflow (320 CSS px): keep wide blocks scrolling inside their
+     own box instead of pushing the page wider than the viewport. Safety net
+     for any <pre>/<code> block; the B1 modules now use lists instead of
+     diagrams, but this keeps other pages safe too. */
+  pre,
+  .highlighter-rouge pre,
+  pre.highlight {
+    overflow-x: auto;
+    max-width: 100%;
+  }
+  /* Long inline code and URLs should wrap rather than widen the page */
+  code {
+    overflow-wrap: anywhere;
+  }
+  /* Wide content tables (e.g. the Module 3 classification and Module 4
+     signals tables) scroll inside their own box at 320 CSS px instead of
+     pushing the whole page wider than the viewport. */
+  .main-content table {
+    display: block;
+    width: max-content;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+</style>

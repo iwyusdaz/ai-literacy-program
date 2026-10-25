@@ -32,17 +32,12 @@ This module explains what actually happened. The next modules teach you what to 
 
 ## 2. Concept: prediction, not lookup
 
-A generative AI assistant does one central thing: **it predicts the next word** (and then the next, and the next), based on patterns in the huge amount of text it was trained on.
+A generative AI assistant does one central thing: **it predicts the next word** (and then the next, and the next), based on patterns in the huge amount of text it was trained on. Here is the whole chain:
 
-```mermaid
-flowchart LR
-    A[Your prompt] --> B[Model predicts likely next words]
-    B --> C[Text that sounds right]
-    C --> D{Is it TRUE?}
-    D -.-x E[The model does not check this]
-```
-
-Text summary: your prompt goes in; the model predicts likely words; the output sounds right; **whether it is true is not checked by the model** — that check is yours.
+1. Your prompt goes in.
+2. The model predicts likely next words, one after another.
+3. The result is text that *sounds* right.
+4. Whether it is **true** is not checked by the model — that check is yours.
 
 This explains three things people often get wrong:
 

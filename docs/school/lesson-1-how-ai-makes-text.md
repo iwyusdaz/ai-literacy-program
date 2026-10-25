@@ -61,7 +61,7 @@ Meet the objective = both sentences correct the misconception in their own words
 
 ## No devices
 
-Skip Part B. Run two more rounds of Part A: Round 3 at "temperature 0.1" (B must pick the most predictable word every time) vs. Round 4 at "temperature 1.5" (B must surprise). Draw the probability bars on the board for "The goalkeeper caught the ___": tall bar for *ball*, thin bars for *cold*, *fame*, *bus*. The lesson works identically on paper.
+Skip Part B. Run two more rounds of Part A: Round 3 at "temperature 0.1" (B must pick the most predictable word every time) vs. Round 4 at "temperature 1.5" (B must surprise). Draw the probability bars on the board for "The goalkeeper caught the ___": tall bar for *ball*, thin bars for *rebound*, *cold* and *trophy* (the same words the interactive offers). The lesson works identically on paper.
 
 ## Differentiation
 

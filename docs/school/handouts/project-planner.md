@@ -52,6 +52,7 @@ Tick each line once it is true:
 - ☐ My fairness example and its cause match each other
 - ☐ Each rule has a reason
 - ☐ Honest tone: makes the reader *smarter*, not *scared*
+- ☐ My last line says whether — and how — AI helped me make the guide
 
 ## Peer review notes (from your partner)
 
