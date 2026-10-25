@@ -1,0 +1,50 @@
+# Site configuration — AI Literacy Program
+# Built with Jekyll + Just the Docs on GitHub Pages (deployed from /docs on main).
+
+title: AI Literacy Program
+description: >-
+  A modular, risk-aware AI literacy curriculum with a workplace track and a
+  secondary school track, mapped to the OECD/EC AILit framework and
+  EU AI Act Article 4. Designed to support — not certify — Article 4 measures.
+
+url: "https://iwyusdaz.github.io"
+baseurl: "/ai-literacy-program"
+
+repository: iwyusdaz/ai-literacy-program
+
+# Pin the theme to a stable release tag (verified 2026-10-25; latest stable: v0.12.0)
+remote_theme: just-the-docs/just-the-docs@v0.12.0
+
+plugins:
+  - jekyll-remote-theme
+  - jekyll-seo-tag
+
+# Just the Docs settings
+color_scheme: light
+search_enabled: true
+search:
+  heading_level: 2
+  previews: 2
+  preview_words_before: 3
+  preview_words_after: 3
+
+heading_anchors: true
+nav_sort: order
+
+aux_links:
+  "GitHub repository":
+    - "https://github.com/iwyusdaz/ai-literacy-program"
+
+footer_content: >-
+  Content licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> ·
+  Code licensed <a href="https://opensource.org/license/mit">MIT</a> ·
+  <a href="/ai-literacy-program/about.html">About, adaptation and license</a>
+
+back_to_top: true
+back_to_top_text: "Back to top"
+
+# Keep generated files out of the output where they serve no purpose
+exclude:
+  - vendor
+  - Gemfile
+  - Gemfile.lock

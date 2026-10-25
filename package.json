@@ -1,0 +1,17 @@
+{
+  "name": "ai-literacy-program",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A modular, risk-aware AI literacy curriculum with a workplace track and a secondary school track (content CC BY 4.0, code MIT).",
+  "type": "module",
+  "scripts": {
+    "eval:pending": "node evaluation/run-simulations.mjs && node evaluation/run-review-panel.mjs",
+    "eval:simulations": "node evaluation/run-simulations.mjs",
+    "eval:panel": "node evaluation/run-review-panel.mjs",
+    "test:keyboard": "node evaluation/tests/keyboard-tests.mjs"
+  },
+  "notes": "Playwright, axe-core and dotenv are resolved from the workspace root node_modules (Node resolution walks up). Nothing here is committed to node_modules.",
+  "engines": {
+    "node": ">=20"
+  }
+}
