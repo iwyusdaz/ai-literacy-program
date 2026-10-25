@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scenario quiz — AI Literacy Program</title>
+<meta name="description" content="12 scenario-based quiz items on AI judgment at work: verification, data, oversight. Feedback on every option. Nothing is stored or sent.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#quiz">Skip to the quiz</a>
+
+<header>
+  <p class="crumb"><a href="../../index.html">AI Literacy Program</a> · <a href="../index.html">Assessment</a></p>
+  <h1>Scenario quiz</h1>
+  <p class="lede">12 scenarios from the (fictional) Northwind Logistics workplace track. Every option has its own feedback — wrong answers are where the learning is.</p>
+  <p class="privacy"><strong>Your privacy:</strong> this quiz stores nothing and sends nothing anywhere. When you close the page, everything is gone.</p>
+</header>
+
+<main id="main">
+
+  <section id="quiz" aria-labelledby="quiz-heading">
+    <h2 id="quiz-heading" class="visually-hidden">Quiz questions</h2>
+    <p id="loading" role="status">Loading questions…</p>
+    <noscript>
+      <p><strong>This quiz needs JavaScript.</strong> All items and feedback are also available in
+      <a href="https://github.com/iwyusdaz/ai-literacy-program/blob/main/docs/assessment/scenario-quiz/items.json">items.json</a>,
+      and the same decisions are practiced in the <a href="../../workplace/module-2-checking-outputs.html">modules</a>.</p>
+    </noscript>
+    <form id="quiz-form" novalidate></form>
+  </section>
+
+  <section id="results" aria-labelledby="results-heading" hidden>
+    <h2 id="results-heading">Your results</h2>
+    <p id="overall"></p>
+    <div id="by-objective"></div>
+    <div id="next-steps"></div>
+    <p><button type="button" id="retry">Start over</button> — the page keeps nothing, so starting over is a true fresh start.</p>
+  </section>
+
+</main>
+
+<footer>
+  <p><a href="../index.html">← Assessment</a> · <a href="../../index.html">AI Literacy Program</a> · Content <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, code <a href="https://opensource.org/license/mit">MIT</a> · <span id="last-reviewed">Last reviewed: 2026-10-25</span></p>
+</footer>
+
+<script src="quiz.js"></script>
+</body>
+</html>

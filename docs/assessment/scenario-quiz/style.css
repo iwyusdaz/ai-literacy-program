@@ -1,0 +1,81 @@
+/* Scenario quiz — AI Literacy Program (MIT licensed code) */
+:root {
+  --ink: #1a1a1a;
+  --muted: #444;
+  --good: #1a6b3c;
+  --bad: #a03325;
+  --link: #0b5394;
+  --focus: #b35c00;
+  --panel: #f4f6f8;
+  --border: #767676;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0 1rem 2rem;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--ink);
+  background: #fff;
+  max-width: 46rem;
+  margin-inline: auto;
+}
+a { color: var(--link); }
+a:focus-visible, button:focus-visible, input:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+.skip { position: absolute; left: -9999px; top: 0; background: #fff; padding: 0.5rem 1rem; border: 2px solid var(--focus); z-index: 10; }
+.skip:focus { left: 0.5rem; top: 0.5rem; }
+.crumb { font-size: 0.875rem; color: var(--muted); }
+h1 { font-size: 1.6rem; line-height: 1.25; margin: 0.25rem 0 0.5rem; }
+.lede { font-size: 1.02rem; }
+.privacy { background: var(--panel); border-left: 4px solid var(--border); padding: 0.5rem 0.75rem; }
+
+fieldset {
+  border: 1px solid var(--border);
+  margin: 1.25rem 0;
+  padding: 0.75rem 1rem 1rem;
+}
+legend { font-weight: 700; padding: 0 0.4rem; }
+.options label {
+  display: block;
+  margin: 0.5rem 0;
+  padding: 0.5rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+}
+.options label:hover { background: var(--panel); }
+.options input { margin-right: 0.5rem; }
+
+fieldset.was-correct { border-left: 5px solid var(--good); }
+fieldset.was-wrong { border-left: 5px solid var(--bad); }
+
+.feedback {
+  min-height: 1.6em;
+  margin: 0.75rem 0 0.25rem;
+  padding: 0.6rem 0.75rem;
+  background: var(--panel);
+  border-radius: 4px;
+  font-weight: 600;
+}
+fieldset.was-correct .feedback { border-left: 4px solid var(--good); }
+fieldset.was-wrong .feedback { border-left: 4px solid var(--bad); }
+/* correctness is also carried by the ✓/✗ text icon — not color alone */
+
+#results table { border-collapse: collapse; width: 100%; margin: 0.75rem 0; }
+#results th, #results td { border: 1px solid var(--border); padding: 0.4rem 0.6rem; text-align: left; }
+#results caption { text-align: left; font-weight: 700; padding-bottom: 0.3rem; }
+#overall { font-weight: 700; }
+button {
+  font: inherit; font-weight: 600; padding: 0.6rem 1.2rem;
+  border-radius: 6px; border: 2px solid #1f5f8b; background: #1f5f8b;
+  color: #fff; cursor: pointer;
+}
+.visually-hidden {
+  position: absolute !important; width: 1px; height: 1px;
+  margin: -1px; padding: 0; border: 0;
+  clip: rect(0 0 0 0); clip-path: inset(50%);
+  overflow: hidden; white-space: nowrap;
+}
+footer { margin-top: 3rem; border-top: 3px solid var(--panel); padding-top: 0.75rem; font-size: 0.875rem; color: var(--muted); }

@@ -1,0 +1,331 @@
+{
+  "version": "1.0.0",
+  "lastReviewed": "2026-10-25",
+  "note": "All scenarios are fictional (Northwind Logistics). Each option carries its own feedback. 'objective' refers to objectives in docs/design/learning-objectives.md.",
+  "items": [
+    {
+      "id": "Q1",
+      "objective": "W1.1",
+      "stem": "A colleague says: \"The assistant gave me the exact delivery date, so it must have looked it up in our order system.\" What is the best response?",
+      "options": [
+        {
+          "text": "\"Yes, it must be connected to our systems — otherwise it couldn't know the date.\"",
+          "correct": false,
+          "feedback": "Not unless a tool was explicitly connected. A general assistant predicts likely text; it has no live access to Northwind's order system. Treating a predicted date as a looked-up fact is exactly the Module 1 trap."
+        },
+        {
+          "text": "\"It predicted a likely-sounding date from patterns in text. Unless a tool is connected, it can't see our systems — so check the date in the order system before using it.\"",
+          "correct": true,
+          "feedback": "Correct. Prediction, not lookup. The date is plausible text, not a fact from the system — verify it like any unconfirmed claim."
+        },
+        {
+          "text": "\"The AI is always right about logistics topics — it was trained on lots of shipping data.\"",
+          "correct": false,
+          "feedback": "Training data gives it plausible patterns, not current facts about your orders. Fluent and confident is not evidence of truth."
+        },
+        {
+          "text": "\"It doesn't matter — the customer only needs a quick answer.\"",
+          "correct": false,
+          "feedback": "It matters: a wrong date creates a promise Northwind cannot keep. Quick and wrong is the most expensive kind of answer (Module 2)."
+        }
+      ]
+    },
+    {
+      "id": "Q2",
+      "objective": "W1.2",
+      "stem": "Which of these Northwind tasks is the BEST fit for a general AI assistant, used as taught in Module 1?",
+      "options": [
+        {
+          "text": "Calculating the exact delivery cost for a 40 kg pallet to Rotterdam",
+          "correct": false,
+          "feedback": "Poor fit: exact arithmetic plus a live tariff table. Use the pricing tool; language models predict number-shaped text."
+        },
+        {
+          "text": "Drafting a first reply to a complaint about a late delivery",
+          "correct": true,
+          "feedback": "Correct. Text drafting with human checks is the strongest use case — you verify names, dates and promises before sending (Module 2)."
+        },
+        {
+          "text": "Deciding which of three applicants gets an interview",
+          "correct": false,
+          "feedback": "Poor fit: a decision about people stays with a human (Module 4), and AI ranking risks unfair bias."
+        },
+        {
+          "text": "Forecasting next month's delivery volume",
+          "correct": false,
+          "feedback": "Poor fit for a general assistant: forecasting needs real historical data and a proper tool. A chatbot produces a confident-sounding guess."
+        }
+      ]
+    },
+    {
+      "id": "Q3",
+      "objective": "W1.2",
+      "stem": "Your team lead asks the assistant to \"decide which driver should get a formal warning\" based on delay statistics. What is the strongest reason to push back?",
+      "options": [
+        {
+          "text": "The assistant might use too many words in its explanation.",
+          "correct": false,
+          "feedback": "Length is not the issue. The problem is that a formal warning affects a person's job — that decision must be owned by a human."
+        },
+        {
+          "text": "A formal warning affects a person's job, so a human must make and own that decision — an AI suggestion cannot be accountable for it.",
+          "correct": true,
+          "feedback": "Correct — that is the affected-person test from Module 4. AI may summarize the statistics; the decision and its accountability stay human."
+        },
+        {
+          "text": "The assistant is new, so we should wait a month before using it for anything.",
+          "correct": false,
+          "feedback": "Waiting does not fix the category. For decisions about people, the human-decides rule applies no matter how mature the tool is."
+        },
+        {
+          "text": "Only managers are allowed to use AI tools at Northwind.",
+          "correct": false,
+          "feedback": "That is not the rule in this program — and it is not the reason. The reason is the affected person, not who may click the tool."
+        }
+      ]
+    },
+    {
+      "id": "Q4",
+      "objective": "W2.1",
+      "stem": "An AI-drafted reply to a customer contains: \"As discussed last Tuesday, your replacement parcel is already on its way and will arrive tomorrow before noon.\" You have no record of any conversation last Tuesday. What is this sentence?",
+      "options": [
+        {
+          "text": "A factual error plus an unverifiable claim — both must be fixed or removed before sending.",
+          "correct": true,
+          "feedback": "Correct. \"As discussed last Tuesday\" asserts a conversation you cannot confirm (unverifiable), and \"arrives tomorrow before noon\" is a delivery promise you have not checked (unverified). Module 2, steps 1–2."
+        },
+        {
+          "text": "A fine sentence — fluent text is usually right.",
+          "correct": false,
+          "feedback": "Fluency is not evidence. Both claims are unverified, and one references a meeting that may never have happened."
+        },
+        {
+          "text": "Only a style problem — the sentence is too long.",
+          "correct": false,
+          "feedback": "The problem is truth, not length. Shorten it only after you have made every claim verifiable."
+        },
+        {
+          "text": "A data-privacy problem — you pasted personal data.",
+          "correct": false,
+          "feedback": "This sentence's problem is verification, not pasting. (Pasting is Module 3 — a different check on the same job aid.)"
+        }
+      ]
+    },
+    {
+      "id": "Q5",
+      "objective": "W2.1",
+      "stem": "An AI-drafted internal memo cites \"the 2023 European Parcel Handling Directive, published by the European Logistics Board\" to justify a packaging change. You have never heard of either. What do you do?",
+      "options": [
+        {
+          "text": "Include it — a directive with an official-sounding name is a safe citation.",
+          "correct": false,
+          "feedback": "Official-sounding names are exactly what fabricated sources look like. Invented organizations and reports are a standard failure mode."
+        },
+        {
+          "text": "Check whether the directive and the European Logistics Board exist and say this; if you cannot verify them, remove the citation and the claim it supports.",
+          "correct": true,
+          "feedback": "Correct — Module 2, step 3. Open the source; if it does not exist or does not say this, the claim goes too. No source you would show your manager = no source."
+        },
+        {
+          "text": "Replace it with a different, more famous law without checking.",
+          "correct": false,
+          "feedback": "Swapping one unverified citation for another keeps the problem. The check is the point, not the name."
+        },
+        {
+          "text": "Ask the AI to confirm that the directive exists — if it confirms, keep it.",
+          "correct": false,
+          "feedback": "The AI that predicted the citation will happily predict a confirmation. Verification means an independent source, not the author vouching for itself."
+        }
+      ]
+    },
+    {
+      "id": "Q6",
+      "objective": "W2.2",
+      "stem": "You are about to send an AI-drafted summary of a delivery report. Using the Verify-before-you-send job aid, which comes FIRST?",
+      "options": [
+        {
+          "text": "Check every number in the summary against the source report.",
+          "correct": true,
+          "feedback": "Correct — though all five checks matter, the job aid order starts with claims and numbers: AI summaries most often corrupt figures, and a confident wrong number is invisible in a meeting."
+        },
+        {
+          "text": "Format the summary nicely for the meeting.",
+          "correct": false,
+          "feedback": "Polish comes last — formatting a wrong summary just makes the wrong numbers more persuasive."
+        },
+        {
+          "text": "Send it — the AI summarized the document, so the numbers are from it.",
+          "correct": false,
+          "feedback": "Summaries are where numbers get invented or quietly changed (Joris's case in Module 2). \"From the document\" is exactly what must be checked."
+        },
+        {
+          "text": "Add a disclaimer that the numbers might be wrong.",
+          "correct": false,
+          "feedback": "A disclaimer does not fix a wrong number — it delegates your check to the reader. Verify or remove."
+        }
+      ]
+    },
+    {
+      "id": "Q7",
+      "objective": "W3.1",
+      "stem": "You want the assistant to draft a reply and paste this prompt: \"Draft a reply for Mrs. Petra Weber about order NW-88123 at Musterstraße 12, Münster.\" Under the Northwind traffic-light rule (Module 3), what is this paste?",
+      "options": [
+        {
+          "text": "Permitted — an order number is not secret.",
+          "correct": false,
+          "feedback": "The order number alone would be fine, but with a name and address it identifies a specific person — that combination is prohibited."
+        },
+        {
+          "text": "Restricted — it is internal information, so use an approved tool.",
+          "correct": false,
+          "feedback": "Restricted is for internal, non-personal information. A name + address + order number is personal data — prohibited in any external tool, approved or not."
+        },
+        {
+          "text": "Prohibited — name + address + order number together identify a specific person. Describe the issue type instead: \"a complaint about a late delivery\".",
+          "correct": true,
+          "feedback": "Correct. Identifiability is the trigger. The AI does not need the identity to draft good text — you add it back from the system in the reply."
+        },
+        {
+          "text": "Prohibited, but only because the address is a home address.",
+          "correct": false,
+          "feedback": "Close, but the reason is broader: name + any address + order number identifies the person. Partial card digits, complaint texts, CVs — all prohibited for the same reason."
+        }
+      ]
+    },
+    {
+      "id": "Q8",
+      "objective": "W3.1",
+      "stem": "Which of these pastes into a company-approved AI tool is PERMITTED under the traffic-light rule?",
+      "options": [
+        {
+          "text": "\"In May, 13% of parcels to Münster were delayed.\" (an anonymized aggregate from a report)",
+          "correct": true,
+          "feedback": "Correct — no person is identifiable, so it is permitted. Anonymized aggregates are the safe way to give the model context."
+        },
+        {
+          "text": "A customer's email including their complaint and phone number",
+          "correct": false,
+          "feedback": "Prohibited: the text identifies the person and their situation. Describe the issue type instead."
+        },
+        {
+          "text": "An applicant's CV, to \"summarize strengths and weaknesses\"",
+          "correct": false,
+          "feedback": "Prohibited on two counts: a CV is personal data (Module 3), and ranking or judging people is an oversight question (Module 4)."
+        },
+        {
+          "text": "Unannounced 2027 contract pricing, pasted into your personal chatbot account",
+          "correct": false,
+          "feedback": "Two failures: unannounced pricing is restricted (approved tools only), and a personal account is never an approved tool for internal information."
+        }
+      ]
+    },
+    {
+      "id": "Q9",
+      "objective": "W3.2",
+      "stem": "Yesterday, a colleague pasted a customer's name and address into a personal chatbot account. It is now the next morning. What should happen first?",
+      "options": [
+        {
+          "text": "Delete the chat quietly — if nobody saw it, there is no incident.",
+          "correct": false,
+          "feedback": "Hiding turns a small incident into a serious one. Deletion does not undo the processing that already happened outside Northwind's control."
+        },
+        {
+          "text": "Stop using that chat and report it today, so the team lead and the data protection officer can decide the next steps.",
+          "correct": true,
+          "feedback": "Correct — Module 3's \"too late\" path: stop → report the same day → lead and DPO take over. Reporting fast is always the right answer."
+        },
+        {
+          "text": "Wait to see whether the customer complains.",
+          "correct": false,
+          "feedback": "Waiting transfers the cost of the mistake to the person affected. The report does not depend on anyone noticing."
+        },
+        {
+          "text": "Paste the same data into the approved tool instead — problem solved.",
+          "correct": false,
+          "feedback": "That adds a second uncontrolled copy. The original exposure still needs reporting and containment."
+        }
+      ]
+    },
+    {
+      "id": "Q10",
+      "objective": "W4.1",
+      "stem": "HR wants to paste 240 CVs into the assistant, have it score each 1–100, and invite the top 20 to interviews. What is the correct call?",
+      "options": [
+        {
+          "text": "Fine, as long as a human sends the invitations afterwards.",
+          "correct": false,
+          "feedback": "The human only sees the survivors of the scoring pattern. When a filter removes 220 of 240 people, the \"human decision\" happens inside a funnel that may be biased."
+        },
+        {
+          "text": "AI may inform (draft interview questions, summarize requirements), but scoring and ranking people is a decision about people — humans screen, and any AI screening idea goes to the DPO and HR leadership as a formal decision.",
+          "correct": true,
+          "feedback": "Correct — the affected-person test plus the escalation path. Sofia's scenario in Module 4: name the risk, keep the goal, move the decision to the right owner."
+        },
+        {
+          "text": "Fine, because the model was trained on millions of CVs and is therefore objective.",
+          "correct": false,
+          "feedback": "Trained on human text means it can repeat human bias — systematically and at scale. \"Objective\" is the exact opposite of what to assume."
+        },
+        {
+          "text": "Prohibited — no AI tool may ever be used in any HR process.",
+          "correct": false,
+          "feedback": "Too broad. AI may inform HR work (drafting questions, templates, summaries). The line is: it does not decide about people."
+        }
+      ]
+    },
+    {
+      "id": "Q11",
+      "objective": "W4.1",
+      "stem": "The AI assistant suggests declining a customer's damage claim with a firm refusal. The claim is borderline. Who should decide whether to send the refusal?",
+      "options": [
+        {
+          "text": "The assistant — it has processed thousands of similar claims.",
+          "correct": false,
+          "feedback": "This changes something for a person (their money). The affected-person test says a human decides; the assistant may inform."
+        },
+        {
+          "text": "A named human at Northwind reviews the borderline claim and owns the decision; the AI's suggestion is one input.",
+          "correct": true,
+          "feedback": "Correct. For decisions affecting a person, a named human owns the outcome. The person affected can then ask someone — and someone is actually accountable."
+        },
+        {
+          "text": "Whoever is nearest the printer at the time.",
+          "correct": false,
+          "feedback": "Someone must own it — but accountability means a named, appropriate owner, not an accident of geography."
+        },
+        {
+          "text": "The customer — they can appeal the AI's decision if they disagree.",
+          "correct": false,
+          "feedback": "Putting the appeal burden on the affected person inverts the responsibility. Northwind decides, humanly, first."
+        }
+      ]
+    },
+    {
+      "id": "Q12",
+      "objective": "W4.2",
+      "stem": "An AI tool recommends delivery routes that quietly skip drivers' legally required rest breaks, saving 6% in fuel. Which high-risk signals apply, and what is the move?",
+      "options": [
+        {
+          "text": "No signals — it is just route optimization, a normal AI task.",
+          "correct": false,
+          "feedback": "It affects people's safety and breaks the law — that is nearly every high-risk signal at once. \"Just optimization\" is how hazardous recommendations get shipped."
+        },
+        {
+          "text": "Signals: affects persons (driver safety), scale (every route), legal/safety dimension. The move: do not act on it; escalate immediately to the responsible manager.",
+          "correct": true,
+          "feedback": "Correct — Module 4's signals 1, 2 and 5. Safety and law make this a hard stop, not a cost-benefit discussion at the dispatch desk."
+        },
+        {
+          "text": "One signal (it affects drivers), so a quick team chat about it is enough.",
+          "correct": false,
+          "feedback": "Under-counted and under-escalated. Multiple signals stacked (safety + scale + law) mean a formal escalation, not a chat."
+        },
+        {
+          "text": "Signals: it affects fuel costs. The move: ask the AI to find a cheaper route.",
+          "correct": false,
+          "feedback": "That optimizes the wrong thing — the illegal part stays. Name the human harm and the legal dimension, and escalate."
+        }
+      ]
+    }
+  ]
+}
