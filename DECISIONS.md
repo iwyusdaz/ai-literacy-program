@@ -44,6 +44,7 @@ Every ambiguity encountered while building this repository → the choice made �
 - **Ambiguity:** the plan's Phase 4 peer review and the [HUMAN] replacements require a structured review by a separate reviewer agent, which runs after this build completes.
 - **Choice:** prepared `evaluation/human-protocol/review-form.md`; documented the review in METHODS.md as **Agent review** with status "scheduled post-build" and the same-underlying-model limitation; the README uses the mandated evaluation-status line. The reviewer agent's findings will land in the evaluation report and issue tracker.
 - **Why:** it is never labeled "educator review" or "expert feedback"; sequencing is disclosed rather than implied.
+- **Update (2026-10-26):** the review is complete — `evaluation/agent-review.md` (10 ranked findings, 2 blocking). Status lines updated in `evaluation/METHODS.md` §4, the evaluation report (§1/§2/§4) and the README; the round itself is recorded as D13.
 
 ## D8. Pipeline results regeneration: documented procedure, not auto-rewriting docs
 
@@ -62,6 +63,7 @@ Every ambiguity encountered while building this repository → the choice made �
 - **Ambiguity:** GitHub renders Mermaid in Markdown; the Jekyll build does not.
 - **Choice:** used Mermaid blocks for the three process diagrams, each with a **text summary immediately below** ("Text summary: …").
 - **Why:** per build instructions. On the Pages site the diagrams render as code blocks — the text summary carries the content; on github.com they render as diagrams. No information is lost in either rendering.
+- **Update (2026-10-26):** superseded for learner-facing pages — the Mermaid blocks were removed from the four workplace modules after the Agent review measured 61–332 px of horizontal overflow at 320 CSS px (Findings 1 and 5) and judged the raw code noise for a B1 audience. The same content is now numbered lists. Mermaid remains in design documentation only (not learner-facing). See D13.
 
 ## D11. Quiz fetch + noscript fallback
 
@@ -72,3 +74,9 @@ Every ambiguity encountered while building this repository → the choice made �
 
 - **Choice:** zero VoiceOver claims anywhere. The manual check script is provided with expected announcements; the README accessibility statement says a review by a daily assistive-technology user has not happened.
 - **Why:** Guidepup automation is non-functional on macOS 27 (environment fact); fabricating AT evidence is prohibited.
+
+## D13. Agent-review revision round (2026-10-26)
+
+- **Trigger:** the completed Agent review (`evaluation/agent-review.md`) — 10 ranked findings, 2 blocking (content-page reflow; evaluation-status reconciliation).
+- **Choice:** fix all 10 findings in one revision round: numbered lists replace Mermaid in the four workplace modules; `docs/_includes/head_custom.html` adds scroll-in-place CSS for code blocks and wide tables; `testReflow()` covers all 33 site pages; quiz options carry visible A/B/C/D letters; Q6 reworded to the taught Claim→Numbers order; feedback strings de-duplicated; next-word README role corrected; METHODS step-count wording softened; final-project brief asks students to cite their AI help; Lesson 1 unplugged example words aligned with the interactive. Findings → revisions are transferred to the evaluation report §4.
+- **Why:** the review-form sign-off requires findings to move into the revision log, and both blocking findings are small, mechanical fixes.

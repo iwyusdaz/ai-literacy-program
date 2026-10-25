@@ -13,7 +13,7 @@ Repo: `ai-literacy-program` · Site: https://iwyusdaz.github.io/ai-literacy-prog
 | 1 | Automated accessibility audit (axe-core) | **Done** | axe-core 4.11.1 via `tooling/audit-axe.mjs` (build-time scripted runs) | JSON per page + summary; see below |
 | 2 | Scripted task tests (keyboard-only, 320 px, 400% zoom, step counts) | **Done** | Playwright 1.57.0, `evaluation/tests/keyboard-tests.mjs` | Test output in commit history / run log |
 | 3 | Manual VoiceOver check | **Script provided, not run** | A human operator; script in `evaluation/human-protocol/manual-voiceover-check.md` | (Guidepup automation unavailable on macOS 27; `ariaSnapshot` structural checks used as fallback) |
-| 4 | Structured design review | **Agent review — scheduled post-build** | Reviewer agent (separate context, did not build the repo), using `evaluation/human-protocol/review-form.md` | Findings to be recorded in the evaluation report |
+| 4 | Structured design review | **Done** (2026-10-26) | Reviewer agent (separate context, did not build the repo), using `evaluation/human-protocol/review-form.md`; full report: `evaluation/agent-review.md` | Verdict + 10 findings; revisions transferred to `docs/design/evaluation-report.md` §4 |
 | 5 | Multi-model AI review panel | **Pending — requires API key** | `evaluation/run-review-panel.mjs` with MODEL_A/MODEL_B (+optional MODEL_C) | `evaluation/results/review-panel-summary.md` (placeholder until run) |
 | 6 | AI-simulated learner runs + item analysis | **Pending — requires API key** | `evaluation/run-simulations.mjs` with MODEL_A/MODEL_B | `evaluation/results/simulations-summary.md` (placeholder until run) |
 | 7 | Real learner pilot (pre/post + performance task + survey + think-aloud) | **Not run** | Would be run by the repo owner with 5–8 adults; full protocol in `evaluation/human-protocol/` | — |
@@ -31,9 +31,9 @@ Repo: `ai-literacy-program` · Site: https://iwyusdaz.github.io/ai-literacy-prog
 
 - **Tool:** Playwright 1.57.0 (`evaluation/tests/keyboard-tests.mjs`), run against a local static server.
 - **Tasks verified:**
-  - Interactive: Tab order reaches starter → Generate → Reset → slider; Enter generates a word and the `aria-live` status announces it; slider arrow keys update the visible value; Reset clears; probability table exposes % as text; 5 Enter presses = 5 words (step count).
+  - Interactive: Tab order reaches starter → Generate → Reset → slider; Enter generates a word and the `aria-live` status announces it; slider arrow keys update the visible value; Reset clears; probability table exposes % as text; **each Enter adds exactly one word until the honest end-of-sentence state, from which Reset is one press** (step count).
   - Quiz: 12 fieldsets render; keyboard (focus + Space) answers produce feedback in a live region; correctness shows a text icon (✓/✗), not color alone; completing all items reveals the by-objective summary and moves focus to it.
-  - Reflow: no horizontal scroll at 320 px viewport and under 400%-zoom emulation, on both pages.
+  - Reflow: **every page of the site** checked for horizontal scroll at 320 CSS px viewport (the WCAG 1.4.10 equivalent of 400% zoom at 1280) — `testReflow()` in `evaluation/tests/keyboard-tests.mjs` covers the full page list (33 pages), not just the two interactive artifacts. Content pages need a Jekyll build: against a plain static server they are recorded as SKIP, and the full list is verified against the live Pages URL.
 - **What it can show:** the flows work without a mouse, at small sizes/zoom, in a predictable number of steps.
 - **What it cannot show:** whether a real learner finds the interactive understandable, or how a daily screen-reader user experiences it (see rule 3/7).
 
@@ -44,13 +44,13 @@ Repo: `ai-literacy-program` · Site: https://iwyusdaz.github.io/ai-literacy-prog
 - **What remains for a human:** follow `evaluation/human-protocol/manual-voiceover-check.md` (macOS, Cmd+F5), which lists every step and the announcement expected at each step for the interactive and the quiz.
 - **Limitation stated:** no review by someone who uses assistive technology daily has happened. That gap is disclosed in the README accessibility statement.
 
-## 4. Structured design review — Agent review (scheduled post-build)
+## 4. Structured design review — DONE (Agent review, 2026-10-26)
 
-- **Who:** a **reviewer agent** — a separate agent instance in a fresh context that did not build this repository — using the form in `evaluation/human-protocol/review-form.md` (clarity, accuracy, usefulness, gaps; severity-ranked findings).
+- **Who:** a **reviewer agent** — a separate agent instance in a fresh context that did not build this repository — using the form in `evaluation/human-protocol/review-form.md` (clarity, accuracy, usefulness, completeness; severity-ranked findings). Full report: **`evaluation/agent-review.md`**.
+- **Result (summary):** cognitive walkthrough (Lena + Mr. Daniels tasks), Nielsen-10 heuristic evaluation (all severities ≤ 2), structured review scores Clarity 4/5, Accuracy 5/5, Usefulness 5/5, Completeness 4/5. Verdict: strong, coherent build; two blocking findings — content-page reflow failure (WCAG 1.4.10) on the four workplace modules and the evaluation-status reconciliation — plus 8 smaller findings. **All 10 findings are addressed in the 2026-10-26 revisions** (`docs/design/evaluation-report.md` §4, DECISIONS.md).
 - **Label:** this is an **Agent review**. It is not "educator review", not "peer review", and not "expert feedback".
-- **Limitation (must be stated wherever results appear):** the reviewer agent may run on the same underlying model family as the author agent. A model effectively reviewing its own family's output is a structural bias; the multi-model panel (rule 5) exists partly to mitigate this.
-- **What it can show:** usability and clarity gaps a careful reader finds.
-- **What it cannot show:** domain expert endorsement, classroom usability, or any "approved by educators" claim.
+- **Limitation (stated wherever results appear):** the reviewer agent may run on the same underlying model family as the author agent. A model effectively reviewing its own family's output is a structural bias; the multi-model panel (rule 5) exists partly to mitigate this.
+- **What it can show:** usability and clarity gaps a careful reader finds. **What it cannot show:** domain expert endorsement, classroom usability, or any "approved by educators" claim.
 
 ## 5. Multi-model AI review panel — PENDING: requires API key
 
