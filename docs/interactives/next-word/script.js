@@ -74,7 +74,31 @@
     }
   };
 
-  var GENERIC = [[END, 45], ["and", 15], ["the", 12], ["again", 10], ["then", 8], ["quickly", 10]];
+  var GENERIC = [[END, 15], ["and", 14], ["the", 12], ["then", 10], ["again", 9], ["with", 8], ["quickly", 7], ["silently", 7], ["outside", 6], ["twice", 6], ["home", 6]];
+
+  // Shared continuations for high-frequency words, so sentences stay readable
+  // for a few steps before ending. Checked before the GENERIC fallback.
+  var COMMON = {
+    "and": [["the", 18], ["then", 14], ["everyone", 12], ["it", 10], ["how", 8], ["kept", 8], [END, 12], ["smiled", 8], ["ran", 5], ["cheered", 5]],
+    "the": [["crowd", 20], ["whole", 15], ["match", 15], ["same", 12], ["next", 10], ["only", 8], [END, 10], ["one", 10]],
+    "was": [["already", 18], ["gone", 15], ["there", 14], ["clear", 12], ["quiet", 12], ["over", 10], [END, 10], ["right", 9]],
+    "had": [["already", 20], ["to", 16], ["been", 14], ["no", 12], ["one", 10], [END, 12], ["kept", 8], ["seen", 8]],
+    "just": [["in", 25], ["before", 20], ["as", 15], ["outside", 12], [END, 14], ["then", 14]],
+    "then": [["everyone", 20], ["the", 18], ["it", 14], ["quietly", 12], [END, 14], ["again", 12], ["nothing", 10]],
+    "again": [[END, 18], ["and", 16], ["the", 14], ["for", 12], ["with", 12], ["then", 10], ["silently", 10], ["loudly", 8]],
+    "with": [["the", 25], ["him", 15], ["her", 13], ["everyone", 12], [END, 15], ["pride", 10], ["care", 10]],
+    "near": [["the", 25], ["him", 15], ["it", 13], ["midnight", 12], [END, 15], ["home", 10], ["everyone", 10]],
+    "at": [["the", 22], ["last", 16], ["once", 14], ["him", 12], [END, 14], ["home", 12], ["work", 10]],
+    "in": [["the", 24], ["time", 14], ["silence", 13], ["front", 12], [END, 15], ["minutes", 12], ["one", 10]],
+    "on": [["the", 24], ["time", 14], ["target", 12], ["home", 12], [END, 15], ["paper", 12], ["one", 11]],
+    "for": [["the", 22], ["a", 16], ["everyone", 12], ["good", 12], [END, 14], ["one", 12], ["nothing", 12]],
+    "a": [["moment", 20], ["while", 18], ["second", 16], [END, 14], ["few", 12], ["long", 10], ["little", 10]],
+    "everyone": [["cheered", 18], ["knew", 15], ["watched", 13], ["stopped", 12], ["agreed", 10], ["left", 8], [END, 14], ["waited", 10]],
+    "it": [["was", 25], ["mattered", 12], ["all", 12], ["again", 10], ["open", 8], [END, 14], ["out", 9], ["well", 10]],
+    "how": [["it", 20], ["the", 18], ["much", 14], ["far", 12], ["long", 12], ["nobody", 8], [END, 16]],
+    "kept": [["going", 18], ["the", 16], ["his", 14], ["her", 12], ["watching", 12], ["still", 10], [END, 18]],
+    "to": [["the", 22], ["see", 14], ["her", 12], ["him", 12], ["everyone", 10], [END, 15], ["sleep", 8], ["work", 7]]
+  };
 
   var starterSel = document.getElementById("starter");
   var generateBtn = document.getElementById("generate");
@@ -99,10 +123,25 @@
     return words.length ? words[words.length - 1] : "";
   }
 
+  // Keep sentences from ending too abruptly: cap the end-of-sentence weight at
+  // 12% in every distribution and redistribute the excess proportionally.
+  function clampEnd(dist) {
+    var endIdx = -1;
+    for (var i = 0; i < dist.length; i++) if (dist[i][0] === END) { endIdx = i; break; }
+    if (endIdx === -1 || dist[endIdx][1] <= 12) return dist;
+    var excess = dist[endIdx][1] - 12;
+    var otherSum = 0;
+    for (var j = 0; j < dist.length; j++) if (j !== endIdx) otherSum += dist[j][1];
+    return dist.map(function (pair, idx) {
+      if (idx === endIdx) return [pair[0], 12];
+      return [pair[0], pair[1] + (excess * pair[1]) / otherSum];
+    });
+  }
+
   function rawDistribution() {
     var c = chain();
-    var dist = c[currentContext()];
-    return dist || GENERIC;
+    var last = currentContext();
+    return clampEnd(c[last] || COMMON[last] || GENERIC);
   }
 
   function withTemperature(dist, t) {
@@ -210,7 +249,7 @@
     }
 
     refresh(dist);
-    var nextStep = words.length + 1;
+    var nextStep = words.length;
     var shown = word === END ? "end of sentence" : "“" + word + "”";
     renderStatus(
       "Generated word " + nextStep + ": " + shown + ". Sentence so far: “" +

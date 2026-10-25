@@ -29,7 +29,7 @@ Structured with Thalheimer's [LTEM](https://www.worklearning.com/ltem/) (Learnin
 
 | [HUMAN] task | Replacement | Status | What it can show / can't show |
 |---|---|---|---|
-| Interviews | Secondary research synthesis ([research/secondary-research.md](https://github.com/iwayanusada/github-portfolio-building/repos/ai-literacy-program)) | Done | Real, citable population evidence; not first-hand, not client-specific |
+| Interviews | Secondary research synthesis ([research/secondary-research.md](https://github.com/iwyusdaz/ai-literacy-program/blob/main/research/secondary-research.md)) | Done | Real, citable population evidence; not first-hand, not client-specific |
 | Pilot (5–8 adults) | Cognitive walkthrough + heuristic evaluation by a **reviewer agent** (labeled "Agent review") | Reviewer agent (post-build) | Usability/clarity gaps; not real users |
 | Pilot task checks | **Scripted task tests** (Playwright: keyboard-only, 320 px, 400% zoom, step counts) | Done, this build | Flows work; not learner experience |
 | Learner testing | **AI-simulated learner runs + item analysis**, ≥8 runs across personas and prior-knowledge levels (`evaluation/run-simulations.mjs`) | Pipeline ready, **pending API key** | Item-quality/clarity problems; **cannot** show learning gains (personas may already know the content) |

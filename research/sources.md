@@ -29,6 +29,7 @@ All sources were accessed and verified on **2026-10-25** unless noted. Where a c
 
 7. **McKinsey, "The State of AI" global survey (published November 2025)** — <https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai>
    - *Supports:* **88% of respondent organizations** report using AI in at least one business function; organizational adoption is broad but scaling is uneven. Used for the adoption context.
+   - *Verification note:* mckinsey.com blocks automated access (verified 2026-10-25: both direct fetch and reader tools are denied). The 88% figure was confirmed against McKinsey's own chart page ("AI at work but not at scale") as surfaced in web search on 2026-10-25, but it could not be fetched directly. If precision matters for your use, verify this figure manually before citing.
 
 8. **Interface (EU), "An operational framework for AI literacy in the workplace"** — <https://www.interface-eu.org/publications/ai-literacy-workplace-framework>
    - *Supports (phrasing matters):* Corporate AI training "often prioritises productivity and tool use" while responsible use also requires understanding of limitations, failure modes, potential harms and applicable obligations; and validated assessment methods for workplace AI literacy are lacking (few validated scales tested beyond basic validity, none tested across cultures; citing Lintner 2024).
