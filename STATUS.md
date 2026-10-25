@@ -1,6 +1,6 @@
 # STATUS — ai-literacy-program
 
-Last updated: **2026-10-25** (v1.0.0 build complete)
+Last updated: **2026-10-26** (v1.0.0 build + agent-review revision round complete)
 
 ## Current state
 
@@ -15,7 +15,7 @@ Last updated: **2026-10-25** (v1.0.0 build complete)
 | three.js embedding-space experiment | Skipped by decision (DECISIONS.md D1) |
 | Evaluation: axe audit | Done — 0 critical/serious (local on standalone pages; full-page audit re-run on live Pages build) |
 | Evaluation: scripted task tests | Done — 20/20 (keyboard, reflow, step counts, live regions) |
-| Evaluation: Agent review (reviewer agent, structured form) | Scheduled post-build — form ready at `evaluation/human-protocol/review-form.md`; findings go to the evaluation report |
+| Evaluation: Agent review (reviewer agent, structured form) | **Done 2026-10-26** — `evaluation/agent-review.md` (10 ranked findings); all fixed the same round, see the log below |
 | Evaluation: simulated learner runs + item analysis | **PENDING: requires API key** (`evaluation/run-simulations.mjs`; dry-run tested) |
 | Evaluation: multi-model review panel | **PENDING: requires API key** (`evaluation/run-review-panel.mjs`; dry-run tested) |
 | Evaluation: real learner pilot | Not run — full protocol ready in `evaluation/human-protocol/` (adults only) |
@@ -29,17 +29,28 @@ Last updated: **2026-10-25** (v1.0.0 build complete)
 |---|---|---|
 | axe: interactive + quiz (local) | `node tooling/audit-axe.mjs <urls> --out /tmp/axe-final` | 0 violations (after fixing `landmark-unique`) |
 | axe: all 33 site pages (live Pages build) | `node tooling/audit-axe.mjs <all live urls> --out /tmp/axe-live*` | **0 critical/serious on every page**; fixed en route: unlabeled GFM checkboxes (project-planner, critical) and blank corner table headers (needs-analysis, personas) — re-audited clean at commit ce7e300 |
-| Keyboard/reflow tests | `node evaluation/tests/keyboard-tests.mjs` (local) and `… https://iwyusdaz.github.io/ai-literacy-program` (live) | **20/20 PASS on both** |
+| Keyboard/reflow tests | `node evaluation/tests/keyboard-tests.mjs` (local) and `… https://iwyusdaz.github.io/ai-literacy-program` (live) | Local: 20/20 + 31 content-page SKIPs (no Jekyll build); **live after the fix: 51/51 PASS on all 33 pages** |
 | Internal links (source mapping) | link-mapping check over docs/**.md (Jekyll .md→.html) | 0 broken (148 links) |
 | Live linkcheck | `node tooling/linkcheck.mjs https://iwyusdaz.github.io/ai-literacy-program/ --max 200` | **38 pages, 0 broken links** (fixed en route: interactive README.html → README.md) |
 | External links | curl over all 28 unique external URLs | 200s verified; OECD/McKinsey bot-blocked (403/000) — see notes in `research/sources.md`; github.com links resolve post-publish |
 | Pipeline dry-run | `node evaluation/run-simulations.mjs --dry-run && node evaluation/run-review-panel.mjs --dry-run` | 92 stub files in `dry-run/`, all headed "DRY RUN – NOT REAL RESULTS", no network |
 | Pipeline placeholder-env guard | `cp .env.example .env && npm run eval:pending` | exit 1, clear message, zero network calls; `.env` deleted after test |
-| Secrets | `gitleaks detect --no-git` | no leaks found |
+| Secrets | `gitleaks detect --no-git` (re-run after the review round) | no leaks found |
 | No committed .env | `git log --all --name-only \| grep -E "(^\|/)\.env$"` | nothing found |
 | No files > 50MB | `git rev-list --objects --all` size check | none (largest: LICENSE 18.7 KB) |
 | Pages build | `gh api repos/iwyusdaz/ai-literacy-program/pages/builds/latest` | `built`, no errors; site live at first build |
 | Repo hygiene | description + 7 topics set via `gh repo edit --add-topic` | instructional-design, ai-literacy, curriculum-design, eu-ai-act, accessibility, oer, assessment-design |
+
+## Agent review + revision round (2026-10-26)
+
+A separate reviewer agent (fresh context) ran the structured review; full report: `evaluation/agent-review.md`. Verdict: strong, coherent build (Clarity 4/5, Accuracy 5/5, Usefulness 5/5, Completeness 4/5; all heuristic severities ≤ 2). Findings → revisions (all committed 2026-10-26; details in `docs/design/evaluation-report.md` §4 and DECISIONS.md D13):
+
+1. **Reflow (Major, blocking):** workplace modules 1–4 overflowed at 320 CSS px (61–332 px; rendered Mermaid blocks and wide tables) — Mermaid replaced by numbered lists, scroll-in-place CSS added via `docs/_includes/head_custom.html`; `testReflow()` extended to all 33 pages. Live pre-fix 46/51 (also caught lesson 3, missed by the review); post-fix **51/51 live**.
+2. **Evaluation-status chain (Major, blocking):** METHODS.md §4, evaluation report §1/§2 and this file now mark the review done with a pointer to the report; findings transferred into the report's revision log.
+3. **Quiz feedback (Moderate):** options carry visible A./B./C./D. letters ("the better answer is option B" is now findable — verified live); Q6 realigned with the taught Claim→Numbers order; "Correct. Correct." duplication removed.
+4. **Smaller fixes (Minor):** next-word README role corrected to `group`; METHODS.md step-count wording softened to the honest end state; final-project brief + planner ask students to cite their AI help; lesson 1 unplugged example words aligned with the interactive's table.
+
+Verification for the round: extended keyboard/reflow suite local 20/20 (+31 SKIPs) → live **51/51**; axe re-audit of the 4 modules + quiz + interactive: 0 violations; `gitleaks detect --no-git`: clean; Pages build for commit 022bcee: built, no errors.
 
 ## Owner to-do list
 
