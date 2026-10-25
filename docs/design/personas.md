@@ -15,7 +15,7 @@ description: Five fictional personas (three workplace, two school) with design i
 
 ### Lena, 27 — customer service agent
 
-| | |
+| Aspect | Detail |
 |---|---|
 | Context | Drafts customer replies daily with the new AI assistant at Northwind Logistics |
 | Prior AI use | Daily, uncritical — trusts fluent output |
@@ -28,7 +28,7 @@ description: Five fictional personas (three workplace, two school) with design i
 
 ### Joris, 45 — operations planner
 
-| | |
+| Aspect | Detail |
 |---|---|
 | Context | Uses AI to summarize weekly operations and delivery reports |
 | Prior AI use | Occasional, skeptical |
@@ -41,7 +41,7 @@ description: Five fictional personas (three workplace, two school) with design i
 
 ### Sofia, 38 — HR administrator
 
-| | |
+| Aspect | Detail |
 |---|---|
 | Context | Considering AI to screen incoming CVs |
 | Prior AI use | Low |
@@ -56,7 +56,7 @@ description: Five fictional personas (three workplace, two school) with design i
 
 ### Ayo, 15 — student
 
-| | |
+| Aspect | Detail |
 |---|---|
 | Context | Uses chatbots for homework several times a week |
 | Prior AI use | High, fluent |
@@ -69,7 +69,7 @@ description: Five fictional personas (three workplace, two school) with design i
 
 ### Mr. Daniels — teacher (non-specialist)
 
-| | |
+| Aspect | Detail |
 |---|---|
 | Context | Teaches the unit as part of the curriculum; IT background is basic |
 | Prior AI use | Low–medium |

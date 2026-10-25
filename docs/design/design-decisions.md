@@ -65,7 +65,7 @@ Every decision lists: decision → alternatives → rationale → evidence/basis
 - **Decision:** The next-word interactive uses a small hard-coded bigram-style probability table for 5–6 sentence starters. No network calls, ever.
 - **Alternatives:** Calling a real model API; a tiny local neural net.
 - **Rationale:** The learning goal is the *mechanism* (prediction, temperature), not model fidelity. A hard-coded table is transparent, instant, works offline, and is inspectable by students and teachers.
-- **Evidence:** Interactive [README](../interactives/next-word/README.html) (learning goal, design notes).
+- **Evidence:** Interactive [README](../interactives/next-word/README.md) (learning goal, design notes).
 
 ## D9. Verification taught as 5 concrete checks, not "use your judgment"
 

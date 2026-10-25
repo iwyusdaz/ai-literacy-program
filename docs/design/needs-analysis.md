@@ -23,7 +23,7 @@ description: Performance gap, root causes, task analysis and constraints for the
 
 ## 2. The performance gap
 
-| | Current state (hypothetical, fictional client) | Desired state |
+| Aspect | Current state (hypothetical, fictional client) | Desired state |
 |---|---|---|
 | Verification | Send AI drafts after a skim; fluent text feels correct | Claims, numbers and sources checked before sending |
 | Data | Paste anything into the AI assistant to "give it context" | Classify data first; never paste customer personal data |

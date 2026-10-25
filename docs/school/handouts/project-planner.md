@@ -15,7 +15,7 @@ Name: ________________ · Working with (optional): ________________
 
 ## Step 1 — choose your format and your reader
 
-| | My choice |
+| Field | My choice |
 |---|---|
 | Format (poster / leaflet / video script / web page / other) | |
 | My reader ("someone who trusts chatbots too much") | |
@@ -45,11 +45,13 @@ Part 1: ____ words · Part 2: ____ · Part 3: ____ · Part 4: ____ (≈ 50 each 
 
 ## Step 4 — self-check before you submit
 
-- [ ] Everything is in my own words (no lesson text copied back)
-- [ ] My fact-check names a real source I actually opened
-- [ ] My fairness example and its cause match each other
-- [ ] Each rule has a reason
-- [ ] Honest tone: makes the reader *smarter*, not *scared*
+Tick each line once it is true:
+
+- ☐ Everything is in my own words (no lesson text copied back)
+- ☐ My fact-check names a real source I actually opened
+- ☐ My fairness example and its cause match each other
+- ☐ Each rule has a reason
+- ☐ Honest tone: makes the reader *smarter*, not *scared*
 
 ## Peer review notes (from your partner)
 
