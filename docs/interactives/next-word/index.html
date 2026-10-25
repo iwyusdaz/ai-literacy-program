@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How a chatbot picks the next word — AI Literacy Program</title>
+<meta name="description" content="An accessible interactive: generate a sentence word by word and watch the model predict likely next words. No network calls.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to the interactive</a>
+
+<header>
+  <p class="crumb"><a href="../../index.html">AI Literacy Program</a> · Shared interactive (used in <a href="../../school/lesson-1-how-ai-makes-text.html">Lesson 1</a> and <a href="../../workplace/module-1-what-ai-is.html">Workplace Module 1</a>)</p>
+  <h1>How a chatbot picks the next word</h1>
+  <p class="lede">A chatbot does not look up answers. It predicts a likely <strong>next word</strong>, over and over. Here is a tiny model you can run yourself — nothing is sent anywhere.</p>
+</header>
+
+<main id="main">
+
+  <section aria-labelledby="starter-heading">
+    <h2 id="starter-heading">1. Choose a sentence starter</h2>
+    <p>
+      <label for="starter">Sentence starter</label>
+      <select id="starter">
+        <option value="s1">The goalkeeper caught the</option>
+        <option value="s2">She opened the door and</option>
+        <option value="s3">The experiment showed that the</option>
+        <option value="s4">On Monday morning the</option>
+        <option value="s5">The best way to learn is</option>
+        <option value="s6">The detective noticed that the</option>
+      </select>
+    </p>
+  </section>
+
+  <section aria-labelledby="controls-heading">
+    <h2 id="controls-heading">2. Generate words</h2>
+    <div class="controls">
+      <button type="button" id="generate">Generate next word</button>
+      <button type="button" id="reset">Reset</button>
+    </div>
+
+    <p class="sentence-line">
+      <span id="sentence-label">Sentence so far:</span>
+      <output id="sentence" for="generate" aria-live="off"></output>
+    </p>
+
+    <p id="status" role="status" aria-live="polite" class="status">Choose a starter, then press “Generate next word”.</p>
+
+    <div class="temp">
+      <label for="temperature">Temperature (adventurousness): <output id="temp-value" for="temperature">1.0</output></label>
+      <input type="range" id="temperature" min="0.2" max="2" step="0.1" value="1"
+             aria-describedby="temp-help">
+      <p id="temp-help" class="hint">Low temperature: the model almost always takes the most likely word (safe, boring). High temperature: unlikely words get a real chance (creative, sometimes nonsense).</p>
+    </div>
+
+    <p id="done" class="done" hidden>The model has reached the end of what it learned for this sentence. Press Reset to try again — try another temperature.</p>
+  </section>
+
+  <section aria-labelledby="probs-heading">
+    <h2 id="probs-heading">3. What the model considers next</h2>
+    <p class="hint">These are the model’s probabilities for the next word <em>right now</em>, adjusted by your temperature. The bar shows the size of each chance.</p>
+    <div class="table-wrap" tabindex="0" role="region" aria-labelledby="probs-heading">
+      <table id="probs">
+        <caption class="visually-hidden">Next-word candidates with their probabilities</caption>
+        <thead>
+          <tr><th scope="col">Next word</th><th scope="col">Probability</th><th scope="col">Chance</th></tr>
+        </thead>
+        <tbody id="prob-body"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="explain-heading">
+    <h2 id="explain-heading">What is happening here</h2>
+    <p>Every time you press “Generate next word”, the tiny model looks at the sentence so far and picks <strong>one word from a probability list</strong>. Nothing checks whether the sentence is <em>true</em> — that is not part of the machinery. The <strong>temperature</strong> slider reshapes the list: at low temperature the most likely word dominates; at high temperature, unlikely words get picked more often, so sentences become creative and sometimes nonsense.</p>
+    <p>Real chatbots work the same way in principle — with vastly bigger lists and patterns learned from enormous amounts of text. The key consequence is the same: <strong>fluent is not the same as correct</strong>. A chatbot can produce a beautiful sentence about something entirely false, with the same confident tone. That is why checking outputs is a skill of its own — see <a href="../../workplace/module-2-checking-outputs.html">Workplace Module 2</a> or <a href="../../school/lesson-2-when-ai-gets-it-wrong.html">School Lesson 2</a>.</p>
+    <p class="hint">Technical note: this page uses a small hard-coded table of word probabilities. It makes no network requests, stores nothing, and works offline.</p>
+  </section>
+
+</main>
+
+<footer>
+  <p><a href="../../index.html">← AI Literacy Program</a> · Content <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, code <a href="https://opensource.org/license/mit">MIT</a> · <span id="last-reviewed">Last reviewed: 2026-10-25</span></p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
