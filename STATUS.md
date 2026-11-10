@@ -52,6 +52,7 @@ Verification for the round: extended keyboard/reflow suite local 20/20 (+31 SKIP
 ## Agent-simulated evaluation round (2026-11-11)
 The owner decided that no repository should need an API key (DECISIONS.md D14). The API pipelines, `.env.example` and their npm scripts were removed. Instead, one AI agent (the Kiro build agent, single model, no API) ran 10 simulated learner runs and a 12-review panel in this workspace. Results: `evaluation/results/simulations-summary.md` and `evaluation/results/review-panel-summary.md`; 2 major and 14 minor issues plus 8 confusion points, all open (not yet applied). The planned blind cross-model comparison could not be reproduced and is stated as a limitation.
 Verification for the round (local, before push): `npm run test:keyboard` against a static server of `docs/`: 20/20 (+31 content-page SKIPs, no Jekyll build); axe on the interactive and quiz: 0 violations; `git grep -i "api key\|API_KEY\|eval:pending"`: only notes that the keys were removed (CHANGELOG, DECISIONS D14, METHODS "Environment").
+Verification after deploy (commit 8ed38e3, Pages build `built`): live `node evaluation/tests/keyboard-tests.mjs https://iwyusdaz.github.io/ai-literacy-program`: 51/51 pass; axe on the live evaluation report, evaluation plan, rubric, design index, interactive and quiz: 0 violations; `node tooling/linkcheck.mjs <live site> --max 200`: 38 pages, 0 broken links; site root HTTP 200.
 ## Owner to-do list
 
 1. Decide which open revision candidates from the agent-simulated runs to apply (`docs/design/evaluation-report.md` §4).
