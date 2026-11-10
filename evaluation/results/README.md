@@ -1,14 +1,10 @@
 # evaluation/results/
 
-Output folder for the pending evaluation pipelines. **Nothing here is real until a pipeline is run with a configured `.env`.**
+Results of the agent-simulated evaluations run on 2026-11-11. Both were performed by one AI agent role-playing personas and reviewers. They are labeled agent-simulated everywhere and are never human or real-learner data.
 
-| File | Written by | Status |
+| File | What it holds | Performed by |
 |---|---|---|
-| `simulations-summary.md` | `evaluation/run-simulations.mjs` (real run) | Pre-run placeholder — all results "PENDING: requires API key" |
-| `simulations/*.json` | `evaluation/run-simulations.mjs` (real run) | Does not exist yet |
-| `review-panel-summary.md` | `evaluation/run-review-panel.mjs` (real run) | Pre-run placeholder — all results "PENDING: requires API key" |
-| `review-panel/*.json` | `evaluation/run-review-panel.mjs` (real run) | Does not exist yet |
+| `simulations-summary.md` | 10 agent-simulated learner runs (5 personas × 2 prior-knowledge levels) with item analysis for Q4 to Q12 | One AI agent, single model |
+| `review-panel-summary.md` | 12 agent-simulated reviews (3 reviewer roles × 4 files) with scores and 16 issues | One AI agent, single model |
 
-Dry-run stubs (never results) go to `dry-run/` at the repository root and are gitignored; every stub file is headed "DRY RUN – NOT REAL RESULTS".
-
-Raw model outputs are saved here on a real run so results are reproducible and auditable. See `evaluation/METHODS.md` for the rerun procedure.
+The method, limits and procedure are in `evaluation/METHODS.md` §5 and §6.

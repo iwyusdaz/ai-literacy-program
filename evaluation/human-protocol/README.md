@@ -1,6 +1,6 @@
 # Human testing protocol — overview
 
-This folder contains everything needed to run **real** human testing when the repo owner is ready. Nothing here has been run yet; all results sections elsewhere are marked pending. Templates were drafted by the build agent (AI-assisted) and should be read and adapted by a human before use.
+This folder contains everything needed to run **real** human testing when the repo owner is ready. Nothing here has been run yet; all human-results sections elsewhere are marked "not run". Templates were drafted by the build agent (AI-assisted) and should be read and adapted by a human before use.
 
 | File | Purpose | Used in |
 |---|---|---|

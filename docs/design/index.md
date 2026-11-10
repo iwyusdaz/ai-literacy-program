@@ -20,6 +20,6 @@ This section shows the design process behind the program: analysis â†’ design â†
 | [Evaluation plan](evaluation-plan.html) | What is measured, at which LTEM tier, with which method |
 | [Evaluation report](evaluation-report.html) | What was done, what it can and can't show, what changed |
 
-Evaluation methods and their status (done / pending) are documented in detail in the repository's `evaluation/METHODS.md`.
+Evaluation methods and their status (done / not run) are documented in detail in the repository's `evaluation/METHODS.md`.
 
 *Last reviewed: 2026-10-25*

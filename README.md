@@ -4,7 +4,7 @@ A modular, risk-aware **AI literacy curriculum** with a workplace track and a se
 
 **[Live site](https://iwyusdaz.github.io/ai-literacy-program/)** · **[Design documentation](https://iwyusdaz.github.io/ai-literacy-program/design/)** · Role: Sole designer
 
-**Evaluation status:** Automated accessibility testing and agent-based design reviews are complete. AI-simulated learner and review-panel evaluations are pending. No real learners have tested this yet. See evaluation/METHODS.md.
+**Evaluation status:** Automated accessibility testing, an agent design review, and agent-simulated learner and review-panel runs (one AI agent, single model) are complete. No real learners or human experts have tested this yet. See evaluation/METHODS.md.
 
 ![Hero: the two-track structure of the AI Literacy Program](docs/assets/images/hero.png)
 
@@ -23,7 +23,7 @@ Organizations that build or use AI in the EU must take measures to support staff
 2. **Needs analysis** grounded in cited secondary research: root causes sorted into knowledge/skill/motivation/environment, with non-training fixes flagged; five critical behaviors defined ([needs analysis](https://iwyusdaz.github.io/ai-literacy-program/design/needs-analysis.html)).
 3. **Design:** observable objectives (condition–behavior–criterion), a full [alignment matrix](https://iwyusdaz.github.io/ai-literacy-program/design/alignment-matrix.html) (objective → content → practice → assessment → framework competence), and a 10-entry design-decisions log.
 4. **Build:** vanilla HTML/CSS/JS for the interactive and quiz (no frameworks, no network calls); Jekyll + Just the Docs for content.
-5. **Evaluate:** automated accessibility audit, scripted task tests, an agent review, and two pending API-key pipelines ([methods and limits](evaluation/METHODS.md)).
+5. **Evaluate:** automated accessibility audit, scripted task tests, an agent review, and agent-simulated learner and review-panel runs ([methods and limits](evaluation/METHODS.md)).
 
 ## Key design decisions
 
@@ -37,11 +37,11 @@ Organizations that build or use AI in the EU must take measures to support staff
 
 **What was measured (done):** automated WCAG 2.1 A/AA audit (axe-core) — 0 critical/serious violations on every page; scripted task tests (Playwright) — 51/51 checks: keyboard-only flows, 320 CSS px reflow on every page of the site, step counts, live-region announcements.
 
-**Pending (pipelines built and tested, awaiting API keys):** AI-simulated learner runs (20 runs across 5 personas × 2 knowledge levels × 2 models) with quiz item analysis, and a multi-model review panel (3 reviewer roles × ≥2 models, agreement reported). Run with one command: `npm run eval:pending`. Results tables stay empty ("PENDING: requires API key") until then.
+**Agent-simulated (done 2026-11-11, one AI agent, single model):** 10 simulated learner runs (5 fictional personas × 2 knowledge levels) with quiz item analysis, and a 12-review panel (3 reviewer roles × 4 files). They found 2 major issues: the teacher guide's Lesson 2 answer key describes a different sample text from the one Lesson 2 uses, and the keyed quiz option is the longest option in 11 of 12 items. They also found 14 minor issues and 8 confusion points. These are open revision candidates, not yet applied ([simulations](evaluation/results/simulations-summary.md), [review panel](evaluation/results/review-panel-summary.md)). The original plan was a blind comparison across two or three independent models; that could not be reproduced, so no cross-model agreement is reported.
 
 **What this evidence can show:** the mechanics work (flows, accessibility rules, item structure); design documentation is complete and reviewable.
 
-**What it cannot show:** learning gains, engagement, transfer, or "validated with users" — no real learners have tested this. AI-simulated runs *cannot* show learning even when run (personas may already know the content); they find item-quality and clarity problems. The Agent review is not educator or expert feedback, and may share the author's underlying model (stated limitation). No VoiceOver run has happened (script provided); no review by a daily assistive-technology user has happened. Full inventory: [evaluation/METHODS.md](evaluation/METHODS.md), report: [evaluation report](https://iwyusdaz.github.io/ai-literacy-program/design/evaluation-report.html).
+**What it cannot show:** learning gains, engagement, transfer, or "validated with users": no real learners have tested this. Agent-simulated runs *cannot* show learning (the agent already knows the content and could see the answer key); they find item-quality and clarity problems. The Agent review and the agent-simulated panel are not educator or expert feedback, and may share the author's underlying model (stated limitation). No VoiceOver run has happened (script provided); no review by a daily assistive-technology user has happened. Full inventory: [evaluation/METHODS.md](evaluation/METHODS.md), report: [evaluation report](https://iwyusdaz.github.io/ai-literacy-program/design/evaluation-report.html).
 
 ## Accessibility
 
@@ -51,7 +51,7 @@ Organizations that build or use AI in the EU must take measures to support staff
 
 ## What I'd do differently / next steps
 
-- Run the pending pipelines (they are fully built; only API keys are missing) and act on the item analysis.
+- Act on the open revision candidates from the agent-simulated runs, starting with the Lesson 2 answer key and the quiz length cue.
 - Commission the real 5–8-person pilot — every material for it is in `evaluation/human-protocol/`.
 - Add an accessible tagged PDF of the job aid (v1.0 ships HTML/print as the primary format — documented decision).
 - Localize the workplace track (the B1 English is a constraint, not a solution, for a DE/NL workforce).
@@ -59,7 +59,7 @@ Organizations that build or use AI in the EU must take measures to support staff
 
 ## Tools used
 
-Jekyll + Just the Docs v0.12.0 (GitHub Pages), vanilla JS/CSS, Playwright 1.57.0 (tests), axe-core 4.11.1 (audits), Node.js pipelines for pending evaluations, gitleaks (secret scanning). Content and code written with AI assistance (disclosed below).
+Jekyll + Just the Docs v0.12.0 (GitHub Pages), vanilla JS/CSS, Playwright 1.57.0 (tests), axe-core 4.11.1 (audits), gitleaks (secret scanning). Content and code written with AI assistance (disclosed below).
 
 ## License and attribution
 

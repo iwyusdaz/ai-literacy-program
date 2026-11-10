@@ -1,6 +1,6 @@
 # STATUS — ai-literacy-program
 
-Last updated: **2026-10-26** (v1.0.0 build + agent-review revision round complete)
+Last updated: **2026-11-11** (v1.0.0 build, agent-review revision round, and agent-simulated evaluation complete)
 
 ## Current state
 
@@ -16,12 +16,11 @@ Last updated: **2026-10-26** (v1.0.0 build + agent-review revision round complet
 | Evaluation: axe audit | Done — 0 critical/serious (local on standalone pages; full-page audit re-run on live Pages build) |
 | Evaluation: scripted task tests | Done — 20/20 (keyboard, reflow, step counts, live regions) |
 | Evaluation: Agent review (reviewer agent, structured form) | **Done 2026-10-26** — `evaluation/agent-review.md` (10 ranked findings); all fixed the same round, see the log below |
-| Evaluation: simulated learner runs + item analysis | **PENDING: requires API key** (`evaluation/run-simulations.mjs`; dry-run tested) |
-| Evaluation: multi-model review panel | **PENDING: requires API key** (`evaluation/run-review-panel.mjs`; dry-run tested) |
+| Evaluation: agent-simulated learner runs + item analysis | **Done 2026-11-11** (one AI agent, single model, 10 runs): `evaluation/results/simulations-summary.md` |
+| Evaluation: agent-simulated review panel | **Done 2026-11-11** (one AI agent, single model, 12 reviews; 2 major and 14 minor issues, open): `evaluation/results/review-panel-summary.md` |
 | Evaluation: real learner pilot | Not run — full protocol ready in `evaluation/human-protocol/` (adults only) |
 | Manual VoiceOver check | Not run — script provided in `evaluation/human-protocol/manual-voiceover-check.md` (Guidepup unavailable on macOS 27) |
 | Social preview image | Generated and committed at `docs/assets/social-preview.png` (1280×640); **uploading it in Settings → General is an owner task** (no API) |
-| Pending-pipeline guardrails | Verified: placeholder `.env` → exit 1, zero network; `--dry-run` → stubs in `dry-run/` headed "DRY RUN – NOT REAL RESULTS" |
 
 ## Verification log (2026-10-25)
 
@@ -33,8 +32,6 @@ Last updated: **2026-10-26** (v1.0.0 build + agent-review revision round complet
 | Internal links (source mapping) | link-mapping check over docs/**.md (Jekyll .md→.html) | 0 broken (148 links) |
 | Live linkcheck | `node tooling/linkcheck.mjs https://iwyusdaz.github.io/ai-literacy-program/ --max 200` | **38 pages, 0 broken links** (fixed en route: interactive README.html → README.md) |
 | External links | curl over all 28 unique external URLs | 200s verified; OECD/McKinsey bot-blocked (403/000) — see notes in `research/sources.md`; github.com links resolve post-publish |
-| Pipeline dry-run | `node evaluation/run-simulations.mjs --dry-run && node evaluation/run-review-panel.mjs --dry-run` | 92 stub files in `dry-run/`, all headed "DRY RUN – NOT REAL RESULTS", no network |
-| Pipeline placeholder-env guard | `cp .env.example .env && npm run eval:pending` | exit 1, clear message, zero network calls; `.env` deleted after test |
 | Secrets | `gitleaks detect --no-git` (re-run after the review round) | no leaks found |
 | No committed .env | `git log --all --name-only \| grep -E "(^\|/)\.env$"` | nothing found |
 | No files > 50MB | `git rev-list --objects --all` size check | none (largest: LICENSE 18.7 KB) |
@@ -52,9 +49,12 @@ A separate reviewer agent (fresh context) ran the structured review; full report
 
 Verification for the round: extended keyboard/reflow suite local 20/20 (+31 SKIPs) → live **51/51**; axe re-audit of the 4 modules + quiz + interactive: 0 violations; `gitleaks detect --no-git`: clean; Pages build for commit 022bcee: built, no errors.
 
+## Agent-simulated evaluation round (2026-11-11)
+The owner decided that no repository should need an API key (DECISIONS.md D14). The API pipelines, `.env.example` and their npm scripts were removed. Instead, one AI agent (the Kiro build agent, single model, no API) ran 10 simulated learner runs and a 12-review panel in this workspace. Results: `evaluation/results/simulations-summary.md` and `evaluation/results/review-panel-summary.md`; 2 major and 14 minor issues plus 8 confusion points, all open (not yet applied). The planned blind cross-model comparison could not be reproduced and is stated as a limitation.
+Verification for the round (local, before push): `npm run test:keyboard` against a static server of `docs/`: 20/20 (+31 content-page SKIPs, no Jekyll build); axe on the interactive and quiz: 0 violations; `git grep -i "api key\|API_KEY\|eval:pending"`: only notes that the keys were removed (CHANGELOG, DECISIONS D14, METHODS "Environment").
 ## Owner to-do list
 
-1. Add API keys to `.env` (copy `.env.example`), run `npm run eval:pending`, then follow the rerun procedure in `evaluation/METHODS.md` §"Rerun procedure" to refresh status lines.
+1. Decide which open revision candidates from the agent-simulated runs to apply (`docs/design/evaluation-report.md` §4).
 2. Upload `docs/assets/social-preview.png` in repo Settings → General → Social preview (no API available).
 3. Run `evaluation/human-protocol/manual-voiceover-check.md` (15 min) and record results in this file + README accessibility statement.
 4. Reviewer agent: run the structured review (`evaluation/human-protocol/review-form.md`) and merge findings into `docs/design/evaluation-report.md`.
@@ -74,6 +74,6 @@ Verification for the round: extended keyboard/reflow suite local 20/20 (+31 SKIP
 ## Known limitations (disclosed, not hidden)
 
 - No real learners, no educator/expert review, no VoiceOver run, no daily-AT-user review — all stated in README/METHODS/evaluation report.
-- Simulated runs cannot show learning gains even after they run.
+- Agent-simulated runs cannot show learning gains, and they used one model only (the planned cross-model comparison was not reproduced).
 - AILit coverage gaps (energy, tool comparison, Shape AI domain) documented in framework-mapping.md.
 - McKinsey statistic verified via search (site blocks bots) — flagged in `research/sources.md`.

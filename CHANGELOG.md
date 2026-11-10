@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented here. Format based on Keep a Changelog; versioning is date-based for content (curricula change as sources change).
 
+## [1.0.1] - 2026-11-11
+### Changed
+- Evaluation: replaced the two API-key pipelines with an agent-simulated evaluation run in the build workspace by one AI agent (single model, no API): 10 simulated learner runs with item analysis (`evaluation/results/simulations-summary.md`) and a 12-review panel over 4 files (`evaluation/results/review-panel-summary.md`). Results are labeled agent-simulated; the planned cross-model blind design is stated as not reproduced. Findings are listed as open revision candidates in the evaluation report §4.
+- README, STATUS.md, `evaluation/METHODS.md`, evaluation plan, evaluation report, rubric and design index updated to the new status.
+### Removed
+- `.env.example`, `evaluation/lib/env.mjs`, `evaluation/run-simulations.mjs`, `evaluation/run-review-panel.mjs` and the matching npm scripts. The repository no longer uses any API key or model endpoint.
 ## [1.0.0] — 2026-10-25
 
 ### Added

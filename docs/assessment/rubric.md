@@ -62,5 +62,5 @@ Used to score the [performance task](performance-task.html) (both tracks) and th
 ## Using this rubric
 
 - **Passing bar (suggested):** Level 3 or above on all four criteria for the workplace task; Level 2 minimum per criterion for the school project, with growth expected between lessons.
-- **Scorers:** a teacher, a peer (using the peer protocol), or a labeled AI scorer in the pending evaluation pipeline (`evaluation/run-review-panel.mjs`) — any AI-assisted scoring will be labeled as such in results and never presented as human judgment.
+- **Scorers:** a teacher, a peer (using the peer protocol), or a labeled AI scorer. Any AI-assisted scoring is labeled as such in results and never presented as human judgment.
 - The rubric deliberately avoids weighing writing quality: the object is judgment.

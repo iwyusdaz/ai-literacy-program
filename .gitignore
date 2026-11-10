@@ -1,7 +1,6 @@
 # Secrets — never commit
 .env
 .env.*
-!.env.example
 
 # Dependencies
 node_modules/
@@ -9,8 +8,6 @@ node_modules/
 # OS artifacts
 .DS_Store
 
-# Dry-run outputs from evaluation pipelines (stub responses, never real results)
-dry-run/
 
 # Local scratch
 *.log
